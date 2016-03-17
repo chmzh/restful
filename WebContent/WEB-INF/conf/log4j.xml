@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p] %d{MM-dd HH:mm:ss} %l: %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="infoFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/logs/debug/debug.log" />
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p] %d{MM-dd HH:mm:ss} %l: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="INFO" />
+			<param name="LevelMin" value="DEBUG" />
+		</filter>
+	</appender>
+
+	<appender name="errFile" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/logs/err/err.log" />
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%-5p] %d{MM-dd HH:mm:ss} %l: %m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="FATAL" />
+			<param name="LevelMin" value="WARN" />
+		</filter>
+	</appender>
+	
+	<appender name="loginAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/logs/login/login.log" />
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="INFO" />
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+	
+	<appender name="marketAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/logs/market/market.log" />
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="INFO" />
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+	
+	<appender name="paymentAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/logs/payment/payment.log" />
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="FATAL" />
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+	
+	<appender name="secureAppender" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${webapp.root}/WEB-INF/logs/sys/secure.log" />
+		<param name="Encoding" value="UTF-8"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="FATAL" />
+			<param name="LevelMin" value="INFO" />
+		</filter>
+	</appender>
+	
+	<logger name="login">
+		<level value="INFO" />
+		<appender-ref ref="loginAppender" />
+	</logger>
+	
+	<logger name="market">
+		<level value="INFO" />
+		<appender-ref ref="marketAppender" />
+	</logger>
+	
+	<logger name="payment">
+		<level value="INFO" />
+		<appender-ref ref="paymentAppender" />
+	</logger>
+	
+	<logger name="secure">
+		<level value="INFO" />
+		<appender-ref ref="secureAppender" />
+	</logger>
+	
+	<root>
+		<level value="ERROR" />
+		<appender-ref ref="stdout" />
+		<appender-ref ref="infoFile" />
+		<appender-ref ref="errFile" />
+	</root>
+
+</log4j:configuration>
