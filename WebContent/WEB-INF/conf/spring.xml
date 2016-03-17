@@ -61,5 +61,31 @@
 		id="viewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver"> 
 		<property name="suffix" value=".html" /> <property name="contentType" value="text/html;charset=UTF-8" 
 		/> </bean>  
+	<!-- Properties 配置(可放置多个配置文件) -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>/WEB-INF/conf/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+		<!-- 数据源配置 -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
 
+	<!-- MyBatis 配置 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 自动扫描所有 Mapper DAO -->
+		<property name="basePackage" value="com.cmz.web.dao" />
+	</bean>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
 </beans>
