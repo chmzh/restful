@@ -5,6 +5,8 @@ import javax.servlet.ServletContextEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.ContextLoaderListener;
 
+import com.cmz.dc.constant.GlobalConstant;
+
 
 @Component
 public class CmApplicationListener extends ContextLoaderListener{    
@@ -23,7 +25,7 @@ public class CmApplicationListener extends ContextLoaderListener{
     	if(webAppRootKey == null){
     		webAppRootKey = sce.getServletContext().getRealPath("/"); 
             
-            System.setProperty("webapp.root" , webAppRootKey);  
+            System.setProperty(GlobalConstant.WEBROOT , webAppRootKey);  
     	}
         
     }   
