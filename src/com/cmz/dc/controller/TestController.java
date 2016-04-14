@@ -4,11 +4,8 @@ import java.awt.Color;
 import java.io.IOException;
 import java.util.Random;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,10 +23,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.ServletContextAware;
 
 import com.cmz.dc.groovy.BookingService;
+import com.cmz.dc.service.TestService;
 
 @Controller
 public class TestController implements ServletContextAware {
 	
+	@Autowired
+	private TestService testService;
 	
     private static ConfigurableCaptchaService cs = new ConfigurableCaptchaService();
     private static Random random = new Random();
@@ -126,5 +126,11 @@ public class TestController implements ServletContextAware {
         response.setDateHeader("Last-Modified", time);
         response.setDateHeader("Date", time);
         response.setDateHeader("Expires", time);
+    }
+    
+    @RequestMapping("/cache")
+    @ResponseBody
+    public String get(){
+    	return testService.get();
     }
 }
