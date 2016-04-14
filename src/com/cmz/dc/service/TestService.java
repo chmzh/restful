@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TestService {
-	//@Cacheable("name")
+	@Cacheable("test")
 	public String get(){
 		return "abc";
 	}
