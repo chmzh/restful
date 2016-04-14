@@ -37,6 +37,10 @@ public class SystemInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1,
 			Object arg2, ModelAndView arg3) throws Exception {
+		if(arg3!=null && arg3.getModel()!=null){
+			arg3.getModel().put("home", "/dc/");
+			
+		}
 		log.debug("postHandle");
 	}
 

@@ -18,7 +18,6 @@ import org.springframework.web.context.ServletContextAware;
 import com.cmz.dc.groovy.BookingService;
 
 @Controller
-@RequestMapping("/hotels/{hotel}")
 public class TestController implements ServletContextAware {
 	
 	private ServletContext context;
@@ -41,5 +40,9 @@ public class TestController implements ServletContextAware {
 	public String test1(@PathVariable String name) throws ServletException, IOException{
 		
 		return "你好:"+name+bookingService.processBooking();
+	}
+	@RequestMapping("/login")
+	public String login(){
+		return "login";
 	}
 }

@@ -47,7 +47,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	
-	
+	<!-- 
       	<servlet-mapping>
 		<servlet-name>resin-file</servlet-name>
 		<url-pattern>*.gif</url-pattern>
@@ -89,9 +89,9 @@
 		<url-pattern>*.woff</url-pattern>
 	</servlet-mapping>
    
-   
+    -->
  
-   <!--
+   
      	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.gif</url-pattern>
@@ -132,6 +132,6 @@
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.woff</url-pattern>
 	</servlet-mapping>
-	 -->
+	 
 	
 </web-app>
