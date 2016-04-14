@@ -45,4 +45,9 @@ public class TestController implements ServletContextAware {
 	public String login(){
 		return "login";
 	}
+	
+	@RequestMapping("/index")
+	public String index(){
+		return "index";
+	}
 }
