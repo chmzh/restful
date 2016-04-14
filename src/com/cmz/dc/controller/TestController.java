@@ -2,6 +2,7 @@ package com.cmz.dc.controller;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.ServletContext;
@@ -17,6 +18,7 @@ import org.patchca.utils.encoder.EncoderHelper;
 import org.patchca.word.RandomWordFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,6 +26,8 @@ import org.springframework.web.context.ServletContextAware;
 
 import com.cmz.dc.groovy.BookingService;
 import com.cmz.dc.service.TestService;
+import com.cmz.dc.util.PageUtil;
+
 
 @Controller
 public class TestController implements ServletContextAware {
@@ -73,13 +77,24 @@ public class TestController implements ServletContextAware {
 	
 	@RequestMapping("/hi/{name}")
 	@ResponseBody
-	public String test1(@PathVariable String name) throws ServletException, IOException{
+	public String groovytest(@PathVariable String name) throws ServletException, IOException{
 		
 		return "你好:"+name+bookingService.processBooking();
 	}
 	@RequestMapping("/login")
 	public String login(){
 		return "login";
+	}
+	
+	@RequestMapping("/pages")
+	public String pages(Model model,int page){
+		int count = 100;
+		int num = 20;
+		int from = (page-1)*num;
+		
+		model.addAttribute("pages", PageUtil.getPages(page, count, num, "/dc/pages/", null));
+
+		return "pages";
 	}
 	
 	@RequestMapping("/index")
