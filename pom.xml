@@ -101,7 +101,17 @@
 			<artifactId>zookeeper</artifactId>
 			<version>3.4.8</version>
 		</dependency>
-
+		<!-- 添加本地依赖库 -->
+		<!--
+		<dependency>
+			<groupId>org.apache.flueme</groupId>
+			<artifactId>flume-ng-sdk</artifactId>
+			<version>1.6.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/flume-ng-sdk-1.6.0.jar</systemPath>
+		</dependency>
+		-->
+		<!-- 添加本地依赖库 -->
 	</dependencies>
 
 	<build>
